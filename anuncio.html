@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clone - Aluguel e Venda de Imóveis</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="Imagens/logo-localizaLar-semFundo.png" alt="Logo LocalizaLar">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="calcfinanciamento.html">Calculadora de Financiamento</a></li>
+                <li><a href="anuncio.html">Anuncie seu imovel</a></li>
+                <li><a href="contato.html">Contate um Corretor</a></li>
+            </ul>
+            <div class="corretor-btn">
+                <img src="Imagens/pasta.png" alt="Corretor">
+                <span class="tooltip">Acesso para corretores</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <section class="anuncio-form">
+            <h1>Anuncie Seu Imóvel</h1>
+            <p>Preencha os campos abaixo para anunciar seu imóvel na nossa plataforma. Informações detalhadas ajudam a atrair mais interessados.</p>
+            <form action="anuncio.PHP" method="POST" enctype="multipart/form-data">
+                <!-- Dados do Imóvel -->
+                <fieldset>
+                    <legend>Dados do Imóvel</legend>
+                    <div class="form-group">
+                        <label for="title">Título do Anúncio:</label>
+                        <input type="text" id="title" name="title" placeholder="Ex: Apartamento Luxuoso no Centro" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Descrição:</label>
+                        <textarea id="description" name="description" rows="5" placeholder="Descreva as características e benefícios do imóvel" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Tipo de Imóvel:</label>
+                        <select id="type" name="type" required>
+                            <option value="">Selecione</option>
+                            <option value="casa">Casa</option>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="terreno">Terreno</option>
+                            <option value="comercial">Comercial</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Preço (R$):</label>
+                        <input type="number" id="price" name="price" placeholder="Ex: 500000" required>
+                    </div>
+                </fieldset>
+
+                <!-- Localização -->
+                <fieldset>
+                    <legend>Localização</legend>
+                    <div class="form-group">
+                        <label for="address">Endereço:</label>
+                        <input type="text" id="address" name="address" placeholder="Rua, número, bairro" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Cidade:</label>
+                        <input type="text" id="city" name="city" placeholder="Ex: São Paulo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">Estado:</label>
+                        <select id="state" name="state" required>
+                            <option value="">Selecione</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="PR">Paraná</option>
+                            <option value="BA">Bahia</option>
+                            <!-- Outros estados -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cep">CEP:</label>
+                        <input type="text" id="cep" name="cep" placeholder="Ex: 12345-678" required>
+                    </div>
+                </fieldset>
+
+                <!-- Características -->
+                <fieldset>
+                    <legend>Características do Imóvel</legend>
+                    <div class="form-group">
+                        <label for="bedrooms">Quartos:</label>
+                        <input type="number" id="bedrooms" name="bedrooms" min="0" placeholder="Ex: 3" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bathrooms">Banheiros:</label>
+                        <input type="number" id="bathrooms" name="bathrooms" min="0" placeholder="Ex: 2" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="garage">Vagas de Garagem:</label>
+                        <input type="number" id="garage" name="garage" min="0" placeholder="Ex: 1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="area">Área Construída (m²):</label>
+                        <input type="number" id="area" name="area" placeholder="Ex: 120" required>
+                    </div>
+                </fieldset>
+
+                <!-- Upload de Imagens -->
+                <fieldset>
+                    <legend>Imagens</legend>
+                    <div class="form-group">
+                        <label for="images">Faça upload de imagens do imóvel:</label>
+                        <input type="file" id="images" name="images[]" multiple accept="image/*" required>
+                    </div>
+                </fieldset>
+
+                <!-- Dados do Anunciante -->
+                <fieldset>
+                    <legend>Dados do Anunciante</legend>
+                    <div class="form-group">
+                        <label for="name">Nome:</label>
+                        <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" placeholder="Ex: seuemail@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Ex: (11) 91234-5678" required>
+                    </div>
+                </fieldset>
+
+                <!-- Botão de Enviar -->
+                <button type="submit" class="btn-submit">Anunciar Imóvel</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 Imóveis Clone. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
